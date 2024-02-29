@@ -2,8 +2,10 @@ package br.com.totvs.controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -32,6 +34,9 @@ public class ClienteController {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	@Autowired
+    private MessageSource messageSource;
+	
 	@GetMapping("/cliente")
 	public ResponseEntity<List<Cliente>> obterClientes(){
 		HttpHeaders headers = new HttpHeaders();
@@ -46,6 +51,6 @@ public class ClienteController {
 	@PostMapping("/cliente")
 	public ResponseEntity<String> adicionaCliente(@RequestBody ClienteRequest request){
 		var resultado = clienteService.adicionaCliente(request);
-		return ResponseEntity.status(HttpStatus.CREATED).body("TESTE");
+		return ResponseEntity.status(HttpStatus.CREATED).body(messageSource.getMessage("Adicionar.cliente", null, Locale.getDefault()));
 	}
 }
