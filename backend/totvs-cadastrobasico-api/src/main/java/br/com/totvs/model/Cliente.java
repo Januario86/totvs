@@ -1,10 +1,32 @@
 package br.com.totvs.model;
 
-@Entity
-public class Cliente {
+import java.util.List;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idCliente;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Cliente {
+	
+	@JsonProperty("id")
+    private Long idCliente;
+	
+	@JsonProperty("nome")
+    private String nome;
+
+    @JsonProperty("endereco")
+    private String endereco;
+
+    @JsonProperty("bairro")
+    private String bairro;
+
+    @JsonProperty("telefones")
+    private List<Telefone> telefones;
+
 	
 }
