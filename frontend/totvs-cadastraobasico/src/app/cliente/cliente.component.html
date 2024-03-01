@@ -1,0 +1,44 @@
+<div>
+    <h2>Cadastro de Cliente</h2>
+  
+    <form (ngSubmit)="adicionarCliente()" #clienteForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" [(ngModel)]="cliente.nome" required minlength="10" #nome="ngModel">
+        <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="alert alert-danger">
+          <div *ngIf="nome.errors && nome.errors.required">O nome é obrigatório.</div>
+          <div *ngIf="nome.errors && nome.errors.minlength">
+            O nome deve ter no mínimo 10 caracteres.
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" [(ngModel)]="cliente.endereco" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" [(ngModel)]="cliente.bairro" required>
+      </div>
+  
+      <div class="form-group">
+        <h3>Telefones:</h3>
+            <app-telefone></app-telefone>
+      </div>
+  
+      <button type="submit" [disabled]="clienteForm.invalid">Salvar</button>
+    </form>
+  </div>
+
+  <!-- Seção de Lista de Clientes -->
+  <div>
+    <h2>Lista de Clientes Cadastrados</h2>
+    <ul>
+      <li *ngFor="let clienteCadastrado of clientesCadastrados">
+        {{ clienteCadastrado.nome }} - {{ clienteCadastrado.endereco }} - {{ clienteCadastrado.bairro }}
+      </li>
+    </ul>
+  </div>
+  

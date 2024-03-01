@@ -1,0 +1,46 @@
+{
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "João",
+      "endereco": "Rua: União, 100",
+      "bairro": "Centro",
+      "telefone": [
+        {
+          "numero": "123456789"
+        },
+        {
+          "numero": "987654321"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Maria",
+      "endereco": "Rua: das Nações, 100",
+      "bairro": "Centro",
+      "telefone": [
+        {
+          "numero": "111111111"
+        },
+        {
+          "numero": "222222222"
+        }
+      ]
+    },
+    {
+      "id": "1f5b",
+      "nome": "Teste ID validação",
+      "endereco": "Rua: das flores, 100",
+      "bairro": "Centro",
+      "telefone": [
+        {
+          "numero": "23456789"
+        },
+        {
+          "numero": "2213345454"
+        }
+      ]
+    }
+  ]
+}
