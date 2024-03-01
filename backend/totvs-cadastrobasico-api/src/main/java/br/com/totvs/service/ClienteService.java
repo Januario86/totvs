@@ -12,6 +12,6 @@ public interface ClienteService {
 
 	Object adicionaCliente(ClienteRequest request);
 
-	List<Cliente> obtemClientes();
+	List<Cliente> obtemClientes();	
 
 }

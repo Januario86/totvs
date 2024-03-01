@@ -67,12 +67,12 @@ public class ClienteController {
 	 * @return ResponseEntity<String> - Uma resposta HTTP indicando o status da operação de adição de cliente.
 	 *                                Retorna uma mensagem de sucesso ao criar o cliente.
 	 * @see ClienteRequest
-	 */
+	 */	
 	@CrossOrigin
 	@PostMapping("/cliente")
 	public ResponseEntity<String> adicionaCliente(@RequestBody ClienteRequest request){
-		var cliente = clienteService.adicionaCliente(request);
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(messageSource.getMessage("Adicionar.cliente", null, Locale.getDefault()));
+	    clienteService.adicionaCliente(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(messageSource.getMessage("Adicionar.cliente", null, Locale.getDefault()));
 	}
 }
