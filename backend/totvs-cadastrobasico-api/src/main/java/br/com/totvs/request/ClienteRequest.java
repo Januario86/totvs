@@ -19,9 +19,6 @@ public class ClienteRequest implements Serializable {
 
 	private static final long serialVersionUID = 3763088916606276279L;
 
-	@JsonProperty("id")
-    private Long idCliente;
-
 	@JsonProperty("nome")
 	private String nome;
 	

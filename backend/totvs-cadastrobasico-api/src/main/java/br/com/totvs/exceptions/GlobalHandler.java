@@ -16,5 +16,4 @@ public class GlobalHandler {
        return new ResponseEntity<>("Ocorreu um erro: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
 }
