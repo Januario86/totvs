@@ -6,9 +6,7 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +15,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.totvs.model.Cliente;
 import br.com.totvs.request.ClienteRequest;
 import br.com.totvs.service.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Tag(name = "Cliente")
 @RestController
 @CrossOrigin
 public class ClienteController {
@@ -46,6 +46,7 @@ public class ClienteController {
 	 * @see Cliente
 	 */
 	@CrossOrigin
+	@Operation(summary = "Lista os Clientes Cadastrados na base de dados.")
 	@GetMapping("/cliente")
 	public ResponseEntity<List<Cliente>> obterClientes(){
 		
@@ -71,6 +72,7 @@ public class ClienteController {
 	@PostMapping("/cliente")
 	public ResponseEntity<String> adicionaCliente(@RequestBody ClienteRequest request){
 		var cliente = clienteService.adicionaCliente(request);
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(messageSource.getMessage("Adicionar.cliente", null, Locale.getDefault()));
 	}
 }
